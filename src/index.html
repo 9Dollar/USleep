@@ -154,15 +154,12 @@
           alert("분은 0분부터 59분까지 입력가능합니다")
           return;
         }
-        if(amOrPm == "pm"){
-            hours += 12;
-        }
-        var date = new Date(1991,11,25,Number(hours), Number(minutes)).getTime(); 
+        var date = (new Date(1991,11,25,Number(hours), Number(minutes)).getHours()).toString() + "-" + (new Date(1991,11,25,Number(hours), Number(minutes)).getMinutes()).toString(); 
         location.href = "/" + date;
     }
 
     function CalNow(){
-        var date = Number(new Date().getTime()) + 900000; 
+        var date = String(new Date().getHours()) + "-" + String(new Date().getMinutes() + 15); 
         location.href = "/" + date;
     }
 </script>
