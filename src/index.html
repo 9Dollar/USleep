@@ -15,6 +15,7 @@
     font-weight: 700;
   }
   #header-bar {
+    margin-left: 1rem;
     top: 0;
     left: 0;
     right: 0;
@@ -24,6 +25,10 @@
     color: white;
     font-weight: bold;
     align-items: center;
+    display: flex;
+  }
+  .USleep {
+    margin-left: 1rem;
   }
   #sleep-cal {
     margin: 20px;
@@ -31,9 +36,6 @@
     border-radius: 12px;
     padding-bottom: 40px;
     text-align: center;
-  }
-  .USleep {
-    margin-left: 2rem;
   }
   #sleep-cal > .title {
     color: white;
@@ -105,6 +107,7 @@
 </style>
 <body>
     <div id="header-bar">
+      <img src="./img/moon.png" width="30px" height="30px">
         <h1 class="USleep">USleep</h1>
     </div>
     <div id="sleep-cal">
@@ -154,12 +157,12 @@
         if(amOrPm == "pm"){
             hours += 12;
         }
-        var date = new Date(1991,11,25,Number(hours), Number(minutes)).getTime() - 21600000; 
+        var date = new Date(1991,11,25,Number(hours), Number(minutes)).getTime(); 
         location.href = "/" + date;
     }
 
     function CalNow(){
-        var date = new Date().getTime() + 900000; 
+        var date = Number(new Date().getTime()) + 900000; 
         location.href = "/" + date;
     }
 </script>
