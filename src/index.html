@@ -154,12 +154,12 @@
         if(amOrPm == "pm"){
             hours += 12;
         }
-        var date = new Date(1991,11,25,Number(hours), Number(minutes)).getTime(); 
+        var date = new Date(1991,11,25,Number(hours), Number(minutes)).getTime() - 21600000; 
         location.href = "/" + date;
     }
 
     function CalNow(){
-        var date = new Date().getTime() + 900000 - 21600000; 
+        var date = new Date().getTime() + 900000; 
         location.href = "/" + date;
     }
 </script>
