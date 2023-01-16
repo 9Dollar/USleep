@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usleep</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+  body {
+    margin: 0px;
+    border: 0px;
+    background-color: #24262E;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+  }
+  #header-bar {
+    top: 0;
+    left: 0;
+    right: 0;
+    font-size: smaller;
+    height: 55px;
+    padding: 1rem;
+    color: white;
+    font-weight: bold;
+    align-items: center;
+  }
+  #sleep-cal {
+    margin: 20px;
+    border: 1px solid #30363D;
+    border-radius: 12px;
+    padding-bottom: 40px;
+    text-align: center;
+  }
+  .USleep {
+    margin-left: 2rem;
+  }
+  #sleep-cal > .title {
+    color: white;
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 24px;
+    font-weight: 500;
+  }
+  .sleep-cal-elem {
+    margin-bottom: 10px;
+    text-align: center;
+    color: white;
+    font-size: large;
+    font-weight: 500;
+  }
+  .sleep-cal-elem > input {
+    margin: .5rem;
+  }
+  select {
+    width: 100px; /* 원하는 너비설정 */
+    padding: .8em .5em; /* 여백으로 높이 설정 */
+    font-family: inherit;  /* 폰트 상속 */
+    background: url("img/caret-down-outline.png") no-repeat 95% 50%; /* 네이티브 화살표 대체 */  
+    background-size: 20px;
+    border: 1px solid #999; 
+    border-radius: 7px;
+    -webkit-appearance: none; /* 네이티브 외형 감추기 */
+    -moz-appearance: none;
+    appearance: none;
+    color: white;
+  }
+  input {
+    -webkit-appearance: none; /* 네이티브 외형 감추기 */
+    -moz-appearance: none;
+    appearance: none;
+    background: rgba(0, 0, 0, 0); /* 네이티브 화살표 대체 */  
+    filter: grayscale(100%);
+    border: 1px solid #999; 
+    color: white;
+    border-radius: 7px;
+    padding: .8em .8em; /* 여백으로 높이 설정 */
+  }
+  
+  button {
+    -webkit-appearance: none; /* 네이티브 외형 감추기 */
+    -moz-appearance: none;
+    appearance: none;
+    background: rgba(0, 0, 0, 0); /* 네이티브 화살표 대체 */  
+    filter: grayscale(100%);
+    border: 1px solid #999; 
+    color: white;
+    border-radius: 7px;
+    padding: .8em .8em; /* 여백으로 높이 설정 */
+  }
+  #hour-minute {
+    display: flex;
+    justify-content: center;
+  }
+  .btn-submit {
+    margin: .5rem;
+    margin-top: 2rem;
+    text-align: center;
+  }
+  #btn-submit-con {
+    display: flex;
+    justify-content: center;
+  }
+  
+</style>
+<body>
+    <div id="header-bar">
+        <h1 class="USleep">USleep</h1>
+    </div>
+    <div id="sleep-cal">
+        <h3 class="title">언제 취침하고 싶으신가요?</h3>
+        <div class="sleep-cal-elem">
+            <select id="am-or-pm-sel">
+                <option value="am">오전</option>
+                <option value="pm">오후</option>
+            </select>
+        </div>
+            <div id="hour-minute">
+                <div class="sleep-cal-elem">
+                    <input type='number' min="1" max="12" id="hours"><span>시</span>
+                </div>
+                <div class="sleep-cal-elem">
+                    <input type='number' min="0" max="59" id="minutes"><span>분</span>
+                </div>
+            </div>
+            <div id="btn-submit-con">
+                <div class="btn-submit">
+                    <button id="btn-cal" type ="submit" onclick="Cal();">계산</button>
+                </div>
+                <div class="btn-submit">
+                    <button id="btn-cal-now" type ="submit" onclick="CalNow();">지금 누울겁니다</button>
+                </div>
+            </div>
+        <p style="color: white; font-weight:300;">12시에 취침하고 6시에 일어나는걸 권장합니다</p>
+        <p style="color: white; font-weight:300;">취침하기 전 10~20분 전에 누우셔야합니다</p>
+    </div>
+</body>
+<script>
+
+
+    function Cal(){
+        var amOrPm = document.getElementById("am-or-pm-sel").value;
+        var hours = Number(document.getElementById("hours").value);
+        var minutes = Number(document.getElementById("minutes").value);
+        if(hours < 1 || hours > 12){
+          alert("시간은 1시부터 12시까지 입력가능합니다")
+          return;
+        }
+        
+        if(minutes < 0 || minutes > 59){
+          alert("분은 0분부터 59분까지 입력가능합니다")
+          return;
+        }
+        if(amOrPm == "pm"){
+            hours += 12;
+        }
+        var date = new Date(1991,11,25,Number(hours), Number(minutes)).getTime(); 
+        location.href = "/" + date;
+    }
+
+    function CalNow(){
+        var date = new Date().getTime() + 900000; 
+        location.href = "/" + date;
+    }
+</script>
+</html>
