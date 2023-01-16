@@ -14,6 +14,10 @@ app.get('/', (req, res) => {
     res.send(mainPage)
 });
 
+app.get('/date', (req, res) => {
+    res.send(new Date().getTime())
+});
+
 app.get('/:time', (req, res) => {
     
     let { time } = req.params;
