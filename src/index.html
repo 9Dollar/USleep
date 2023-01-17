@@ -2,7 +2,15 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <meta name="Keywords" content="USleep" />
+    <meta name="Description" content="올바른 수면시간을 알려드립니다!" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index" />
+    <meta property="og:image" content="/img/moon.png">
+    <meta property="og:description" content="적절한 수면시간을 알려주는 유용한 웹사이트">
+    <meta property="og:title" content="유슬립 - USleep">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link rel="shortcut icon" href="./img/moon.ico" type="image/x-icon">
     <title>Usleep</title>
 </head>
 <style>
@@ -144,7 +152,7 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="/node_modules/jquery/dist/jquery.js"></script>
 <script>
-  $.getJSON('https://ip-api.com/json', function(data){
+  $.getJSON('http://ip-api.com/json', function(data){
 var lat = data.lat;
 var lon = data.lon;
 var units = "metric";
@@ -152,7 +160,7 @@ var units = "metric";
 $("#city").html(data.city + ", " + data.country)
 console.log(data);
 //Open weather API request
-$.getJSON('https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon='
+$.getJSON('http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon='
 + lon + '&units=' + units + '&APPID=e95d958a11128b11ad3eb0fa101dae38', function(json){
 console.log(json);
 $("#temperature-celcius").html(json.main.temp + ' C&deg');
