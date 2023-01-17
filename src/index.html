@@ -112,18 +112,15 @@
     </div>
     <div id="sleep-cal">
         <h3 class="title">언제 취침하고 싶으신가요?</h3>
+        <p style="color: white; font-weight: 400;">24시 표기법으로 입력해주세요.</p>
         <div class="sleep-cal-elem">
-            <select id="am-or-pm-sel">
-                <option value="am">오전</option>
-                <option value="pm">오후</option>
-            </select>
         </div>
             <div id="hour-minute">
                 <div class="sleep-cal-elem">
-                    <input type='number' min="1" max="12" id="hours"><span>시</span>
+                    <input type='number' min="0" max="24" id="hours"><span>시</span>
                 </div>
                 <div class="sleep-cal-elem">
-                    <input type='number' min="0" max="59" id="minutes"><span>분</span>
+                    <input type='number' min="0" max="60" id="minutes"><span>분</span>
                 </div>
             </div>
             <div id="btn-submit-con">
@@ -138,29 +135,37 @@
         <p style="color: white; font-weight:300;">취침하기 전 10~20분 전에 누우셔야합니다</p>
     </div>
 </body>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 
 
     function Cal(){
-        var amOrPm = document.getElementById("am-or-pm-sel").value;
         var hours = Number(document.getElementById("hours").value);
-        var minutes = Number(document.getElementById("minutes").value);
-        if(hours < 1 || hours > 12){
-          alert("시간은 1시부터 12시까지 입력가능합니다")
+        var minutes = document.getElementById("minutes").value == "" ? undefined : Number(document.getElementById("minutes").value);
+        if(!(24 >= hours) || !(hours >= 0)){
+          Swal.fire({
+            icon: 'error',
+            title: '오류!',
+            text: '시간은 0시부터 24시까지 입력가능합니다'
+          })
           return;
         }
         
-        if(minutes < 0 || minutes > 59){
-          alert("분은 0분부터 59분까지 입력가능합니다")
+        if(!(60 >= minutes)||!(minutes >= 0) || minutes == undefined){
+          Swal.fire({
+            icon: 'error',
+            title: '오류!',
+            text: '분은 0분부터 60분까지 입력가능합니다'
+          })
           return;
         }
-        var date = (new Date(1991,11,25,Number(hours), Number(minutes)).getHours()).toString() + "-" + (new Date(1991,11,25,Number(hours), Number(minutes)).getMinutes()).toString(); 
+        var date = String(hours) + "-" + String(minutes)
         location.href = "/" + date;
     }
 
     function CalNow(){
-        var date = String(new Date().getHours()) + "-" + String(new Date().getMinutes() + 15); 
-        location.href = "/" + date;
+        var NOOWdate = String(new Date().getHours()) + "-" + String(new Date().getMinutes() + 15); 
+        location.href = "/" + NOOWdate;
     }
 </script>
 </html>
