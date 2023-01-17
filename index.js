@@ -9,6 +9,7 @@ app.use('/', express.static('src'))
 var path = require("path");
 
 app.use('/', express.static(path.join(__dirname, 'src')));
+app.use('/node_moudules', express.static(path.join(__dirname, '/node_moudules')));
 
 app.get('/', (req, res) => {
     res.send(mainPage)
