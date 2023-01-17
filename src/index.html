@@ -140,9 +140,9 @@
 
 
     function Cal(){
-        var hours = Number(document.getElementById("hours").value);
+        var hours = document.getElementById("hours").value == "" ? undefined : Number(document.getElementById("hours").value);
         var minutes = document.getElementById("minutes").value == "" ? undefined : Number(document.getElementById("minutes").value);
-        if(!(24 >= hours) || !(hours >= 0)){
+        if(!(24 >= hours) || !(hours >= 0) || hours == undefined){
           Swal.fire({
             icon: 'error',
             title: '오류!',
