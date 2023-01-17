@@ -9,7 +9,7 @@
     <meta property="og:image" content="/img/moon.png">
     <meta property="og:description" content="적절한 수면시간을 알려주는 유용한 웹사이트">
     <meta property="og:title" content="유슬립 - USleep">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
     <link rel="shortcut icon" href="./img/moon.ico" type="image/x-icon">
     <title>Usleep</title>
 </head>
@@ -152,9 +152,9 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="/node_modules/jquery/dist/jquery.js"></script>
 <script>
-  $.getJSON('http://ip-api.com/json', function(data){
-var lat = data.lat;
-var lon = data.lon;
+  $.getJSON('https://ipapi.co/json/', function(data){
+var lat = data["latitude"];
+var lon = data["longitude"];
 var units = "metric";
  
 $("#city").html(data.city + ", " + data.country)
