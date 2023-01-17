@@ -144,7 +144,7 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="/node_modules/jquery/dist/jquery.js"></script>
 <script>
-  $.getJSON('http://ip-api.com/json', function(data){
+  $.getJSON('https://ip-api.com/json', function(data){
 var lat = data.lat;
 var lon = data.lon;
 var units = "metric";
@@ -152,7 +152,7 @@ var units = "metric";
 $("#city").html(data.city + ", " + data.country)
 console.log(data);
 //Open weather API request
-$.getJSON('http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon='
+$.getJSON('https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon='
 + lon + '&units=' + units + '&APPID=e95d958a11128b11ad3eb0fa101dae38', function(json){
 console.log(json);
 $("#temperature-celcius").html(json.main.temp + ' C&deg');
